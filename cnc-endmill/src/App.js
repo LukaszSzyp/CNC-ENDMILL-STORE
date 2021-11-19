@@ -1,7 +1,9 @@
+import { NavBar } from "./component/navBar";
+
 function App() {
   return (
     <div className="App">
-      <h3>CNC end Mill</h3>
+      <NavBar />
     </div>
   );
 }
