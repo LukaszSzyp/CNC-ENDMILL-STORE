@@ -1,4 +1,5 @@
 import * as headerStyles from "./styledHeader";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export const Header = () => {
   return (
@@ -9,7 +10,11 @@ export const Header = () => {
             <headerStyles.Logo src="./img/fanarLogo.jpg" alt="Logo Fanar" />
             <headerStyles.ButtonContainer>
               <headerStyles.Button>Produkty</headerStyles.Button>
-              <headerStyles.Button>Produkty</headerStyles.Button>
+              <headerStyles.Button>Kontakt</headerStyles.Button>
+              <headerStyles.Button>Zaloguj</headerStyles.Button>
+              <headerStyles.Button>
+                <ShoppingCartIcon />
+              </headerStyles.Button>
             </headerStyles.ButtonContainer>
           </headerStyles.Nav>
         </headerStyles.Container>
