@@ -4,6 +4,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "./db-data/firebase-config";
+
+initializeApp(firebaseConfig);
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
