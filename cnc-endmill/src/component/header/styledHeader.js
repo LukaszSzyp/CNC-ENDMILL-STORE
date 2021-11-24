@@ -29,6 +29,18 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  a {
+    margin: 0;
+    padding: 0;
+    border-bottom: 3px solid transparent;
+    &:hover {
+      border-bottom: 3px solid #fd9e00;
+    }
+  }
+  .selected {
+    border-bottom: 3px solid #fd9e00;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -52,9 +64,4 @@ export const Button = styled.button`
   letter-spacing: 0.5px;
   background-color: transparent;
   border: 3px solid transparent;
-
-  &:hover {
-    border-bottom: 3px solid #fd9e00;
-    border-radius: 5px;
-  }
 `;
