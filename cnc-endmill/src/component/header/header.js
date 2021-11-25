@@ -15,11 +15,17 @@ export const Header = () => {
               <NavLink to={"/products"} activeClassName="selected">
                 <headerStyles.Button>Produkty</headerStyles.Button>
               </NavLink>
-              <headerStyles.Button>Kontakt</headerStyles.Button>
-              <headerStyles.Button>Zaloguj</headerStyles.Button>
-              <headerStyles.Button>
-                <ShoppingCartIcon />
-              </headerStyles.Button>
+              <NavLink to={"/contact"} activeClassName="selected">
+                <headerStyles.Button>Kontakt</headerStyles.Button>
+              </NavLink>
+              <NavLink to={"/logIn"} activeClassName="selected">
+                <headerStyles.Button>Zaloguj</headerStyles.Button>
+              </NavLink>
+              <NavLink to={"/basket"} activeClassName="selected">
+                <headerStyles.Button>
+                  <ShoppingCartIcon />
+                </headerStyles.Button>
+              </NavLink>
             </headerStyles.ButtonContainer>
           </headerStyles.Nav>
         </headerStyles.Container>
