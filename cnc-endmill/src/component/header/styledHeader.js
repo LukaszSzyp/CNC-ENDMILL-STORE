@@ -35,11 +35,11 @@ export const ButtonContainer = styled.div`
     padding: 0;
     border-bottom: 3px solid transparent;
     &:hover {
-      border-bottom: 3px solid #fd9e00;
+      border-bottom: 3px solid ${({ theme }) => theme.colors.yellow};
     }
   }
   .selected {
-    border-bottom: 3px solid #fd9e00;
+    border-bottom: 3px solid ${({ theme }) => theme.colors.yellow};
   }
 `;
 

@@ -9,6 +9,7 @@ const theme = {
     header: "rgb(41, 45, 47)",
     body: "#3e4244",
     footer: "rgb(41, 45, 47)",
+    yellow: "#fd9e00",
   },
 };
 

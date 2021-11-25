@@ -1,11 +1,13 @@
 import { GroupBox } from "../groupBox";
 import * as productsStyled from "./styledProducts";
+import { storeCategoryPL } from "../storeCategory";
 
 export const Products = () => {
   return (
     <productsStyled.Products>
-      <h3>Products</h3>
-      <GroupBox />
+      {storeCategoryPL.map((category) => (
+        <GroupBox title={category} />
+      ))}
     </productsStyled.Products>
   );
 };

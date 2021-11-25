@@ -1,9 +1,11 @@
 import * as styledTiles from "./styledTiles";
 
-export const Tiles = () => {
+export const Tiles = ({ category }) => {
   return (
     <styledTiles.TilesContainer>
-      <h3>Tiles Items</h3>
+      <h3>{category.title}</h3>
+
+      <img src={category.img} alt="endmill" />
     </styledTiles.TilesContainer>
   );
 };

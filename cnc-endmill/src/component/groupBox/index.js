@@ -1,12 +1,15 @@
 import * as groupBoxStyled from "./styledBox";
 import { Tiles } from "./tiles";
+import { millEndsCategoryPL } from "../storeCategory";
 
-export const GroupBox = () => {
+export const GroupBox = ({ title }) => {
   return (
     <>
       <groupBoxStyled.GroupBoxContainer>
-        <h3>GroupBox</h3>
-        <Tiles />
+        <h2>{`${title}`}</h2>
+        {millEndsCategoryPL.map((category) => (
+          <Tiles category={category} />
+        ))}
       </groupBoxStyled.GroupBoxContainer>
     </>
   );
