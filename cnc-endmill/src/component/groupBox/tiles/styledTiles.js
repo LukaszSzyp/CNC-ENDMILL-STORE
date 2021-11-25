@@ -7,10 +7,12 @@ export const TilesContainer = styled.div`
   background-color: #6d7274;
   padding-bottom: 1.5rem;
   height: max(100%, 20%);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  justify-content: center;
+  padding: 4px 5px;
+  border-bottom: solid 1px black;
 
   h3 {
+    font-size: 1rem;
     text-align: center;
   }
 

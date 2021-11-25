@@ -6,7 +6,10 @@ export const Products = () => {
   return (
     <productsStyled.Products>
       {storeCategoryPL.map((category) => (
-        <GroupBox title={category} />
+        <GroupBox
+          title={category.categoryTitle}
+          subCategory={category.subCategory}
+        />
       ))}
     </productsStyled.Products>
   );

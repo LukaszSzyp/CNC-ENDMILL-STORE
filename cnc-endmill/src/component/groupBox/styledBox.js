@@ -8,7 +8,8 @@ export const GroupBoxContainer = styled.div`
   border-top: solid 2px ${({ theme }) => theme.colors.yellow};
   display: flex;
   flex-direction: column;
-
+  font-size: 1rem;
+  margin: 0.5rem;
   h2 {
     color: #3e4244;
     text-align: center;
