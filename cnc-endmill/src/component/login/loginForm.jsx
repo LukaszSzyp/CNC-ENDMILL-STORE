@@ -1,23 +1,25 @@
+import * as loginFormStyles from "./styledLogin";
+
 export const LoginForm = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   return (
-    <div>
-      <h1>
-        <form action="">
-          <div className="form-group">
-            <label>
-              Username
-              <input id="username" type="text" />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Password
-              <input id="password" type="text" />
-            </label>
-          </div>
-          <button className="btn btn-primary">Login</button>
-        </form>
-      </h1>
-    </div>
+    <loginFormStyles.LoginForm>
+      <h1>Logowanie</h1>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input autoFocus id="username" type="text" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input id="password" type="text" />
+        </div>
+        <button className="btn btn-primary">Login</button>
+      </form>
+    </loginFormStyles.LoginForm>
   );
 };

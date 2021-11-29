@@ -1,6 +1,5 @@
 import * as groupBoxStyled from "./styledBox";
 import { Tiles } from "./tiles";
-import { millEndsCategoryPL } from "../storeCategory";
 
 export const GroupBox = ({ title, subCategory }) => {
   return (
