@@ -5,7 +5,7 @@ export const Login = styled.section`
   justify-content: center;
 `;
 
-export const LoginForm = styled.form`
+export const LoginForm = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -26,5 +26,19 @@ export const LoginForm = styled.form`
     padding: 5px 10px;
     font-size: 1rem;
     font-weight: 600;
+    border-style: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: ${({ theme }) => theme.colors.yellow};
+  }
+
+  .btn-primary {
+    background-color: ${({ theme }) => theme.colors.header};
+  }
+
+  input:focus {
+    outline: none;
   }
 `;
