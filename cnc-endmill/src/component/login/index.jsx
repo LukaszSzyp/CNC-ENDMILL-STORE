@@ -1,10 +1,10 @@
-import { LoginForm } from "./loginForm";
 import * as loginStyles from "./styledLogin";
+import { Form } from "./form";
 
 export const Login = () => {
   return (
     <loginStyles.Login>
-      <LoginForm />
+      <Form />
     </loginStyles.Login>
   );
 };
