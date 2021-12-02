@@ -1,13 +1,7 @@
 import * as loginFormStyles from "./styledLogin";
 import Input from "./input";
-import Joi from "joi-browser";
 
 export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
-  const schema = {
-    username: Joi.string().required().label("Username"),
-    password: Joi.string().required().label("Password"),
-  };
-
   const doSubmit = () => {
     // Call the server
     console.log("Submitted");
@@ -18,7 +12,6 @@ export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
       <h1>Logowanie</h1>
       <form onSubmit={(e) => handleSubmit(e, doSubmit)}>
         <Input
-          schema={schema}
           name="username"
           label="Imię"
           value={state.data.username}
@@ -26,7 +19,6 @@ export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
           error={state.errors.username}
         />
         <Input
-          schema={schema}
           type="password"
           name="password"
           label="Hasło"

@@ -1,4 +1,3 @@
-import Joi from "joi-browser";
 import { LoginForm } from "./loginForm";
 import { useState } from "react";
 
@@ -8,15 +7,7 @@ export const Form = () => {
     errors: {},
   });
 
-  const validate = (schema) => {
-    /*  const options = { abortEarly: false };
-    const { error } = Joi.validate(state.data, schema, options);
-
-    if (!error) return null;
-
-    const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors; */
+  const validate = () => {
     const errors = {};
 
     const data = state.data;
@@ -26,12 +17,7 @@ export const Form = () => {
     return Object.keys(errors).length === 0 ? null : errors;
   };
 
-  const validateProperty = ({ name, value }, schema) => {
-    /* const obj = { [name]: value };
-    const schemaFragment = { [name]: schema[name] };
-    const { error } = Joi.validate(obj, schemaFragment);
-    return error ? error.details[0].message : null; */
-
+  const validateProperty = ({ name, value }) => {
     if (name === "username") {
       if (value.trim() === "") return "Imię jest wymagane.";
     }
