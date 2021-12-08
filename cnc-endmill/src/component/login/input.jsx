@@ -1,14 +1,13 @@
-const Input = ({ name, label, value, error, onChange }) => {
+const Input = ({ name, label, error, onChange, ...rest }) => {
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
         autoFocus
-        value={value}
+        {...rest}
         onChange={(e) => onChange(e)}
         name={name}
         id={name}
-        type="text"
       />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
