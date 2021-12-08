@@ -1,11 +1,23 @@
+import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link, Redirect } from "react-router-dom";
+
 import * as loginFormStyles from "./styledLogin";
 import Input from "./input";
 
 export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
+  const [shouldRedirect, setShouldRedirect] = useState("");
+
   const doSubmit = () => {
-    // Call the server
-    console.log("Submitted");
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, state.data.username, state.data.password)
+      .then(() => {
+        setShouldRedirect(true);
+      })
+      .catch((err) => alert(err.message));
   };
+
+  if (shouldRedirect) return <Redirect to="/products" />;
 
   return (
     <loginFormStyles.LoginForm>
@@ -27,7 +39,7 @@ export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
           error={state.errors.password}
         />
         <button disabled={validate} className="btn btn-primary">
-          Login
+          Zaloguj
         </button>
       </form>
     </loginFormStyles.LoginForm>

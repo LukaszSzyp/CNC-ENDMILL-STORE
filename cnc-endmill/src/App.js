@@ -1,8 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import { Content } from "./component/content";
+import StyledGlobal from "./component/styledGlobal";
 
 import { Header } from "./component/header/header";
-import StyledGlobal from "./component/styledGlobal";
+import { Content } from "./component/content";
+import { UserContextProvider } from "./context/userContext";
 
 const theme = {
   colors: {
@@ -17,8 +18,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <StyledGlobal />
-      <Header />
-      <Content />
+      <UserContextProvider>
+        <Header />
+        <Content />
+      </UserContextProvider>
     </ThemeProvider>
   );
 }
