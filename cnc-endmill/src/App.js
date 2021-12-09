@@ -11,6 +11,7 @@ const theme = {
     body: "#3e4244",
     footer: "rgb(41, 45, 47)",
     yellow: "#fd9e00",
+    primary: "#C8CCCF",
   },
 };
 

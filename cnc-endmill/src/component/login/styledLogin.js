@@ -35,7 +35,7 @@ export const LoginForm = styled.div`
   }
 
   .btn-primary {
-    background-color: ${({ theme }) => theme.colors.header};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 
   input:focus {

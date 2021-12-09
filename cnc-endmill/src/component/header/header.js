@@ -1,8 +1,15 @@
 import * as headerStyles from "./styledHeader";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { signOut } from "@firebase/auth";
+
+import { UserContext } from "../../context/userContext";
 
 export const Header = () => {
+  const { user, auth } = useContext(UserContext);
+
   return (
     <>
       <headerStyles.Header>
@@ -18,9 +25,17 @@ export const Header = () => {
               <NavLink to={"/contact"} activeClassName="selected">
                 <headerStyles.Button>Kontakt</headerStyles.Button>
               </NavLink>
-              <NavLink to={"/logIn"} activeClassName="selected">
-                <headerStyles.Button>Zaloguj</headerStyles.Button>
-              </NavLink>
+              {user ? (
+                <NavLink to="">
+                  <headerStyles.Button onClick={() => signOut(auth)}>
+                    Wyloguj
+                  </headerStyles.Button>
+                </NavLink>
+              ) : (
+                <NavLink to={"/logIn"} activeClassName="selected">
+                  <headerStyles.Button>Zaloguj</headerStyles.Button>
+                </NavLink>
+              )}
               <NavLink to={"/basket"} activeClassName="selected">
                 <headerStyles.Button>
                   <ShoppingCartIcon />

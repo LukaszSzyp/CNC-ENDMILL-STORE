@@ -25,6 +25,10 @@ export const ButtonContainer = styled.div`
     &:hover {
       border-bottom: 3px solid ${({ theme }) => theme.colors.yellow};
     }
+    button {
+      cursor: pointer;
+      background-color: transparent;
+    }
   }
   button {
     font-size: 1rem;
