@@ -7,7 +7,11 @@ export const GroupBox = ({ title, subCategory }) => {
       <groupBoxStyled.GroupBoxContainer>
         <h2>{`${title}`}</h2>
         {subCategory.map((subCategory) => (
-          <Tiles title={subCategory.title} img={subCategory.img} />
+          <Tiles
+            title={subCategory.title}
+            img={subCategory.img}
+            key={subCategory.title}
+          />
         ))}
       </groupBoxStyled.GroupBoxContainer>
     </>

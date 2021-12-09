@@ -11,7 +11,7 @@ export const Form = () => {
     const errors = {};
 
     const data = state.data;
-    if (data.username.trim() === "") errors.username = "Imię jest wymagane.";
+    if (data.username.trim() === "") errors.username = "Email jest wymagany.";
     if (data.password.trim() === "") errors.password = "Hasło jest wymagane";
 
     return Object.keys(errors).length === 0 ? null : errors;
@@ -19,7 +19,7 @@ export const Form = () => {
 
   const validateProperty = ({ name, value }) => {
     if (name === "username") {
-      if (value.trim() === "") return "Imię jest wymagane.";
+      if (value.trim() === "") return "Email jest wymagany.";
     }
     if (name === "password") {
       if (value.trim() === "") return "Hasło jest wymagane";
