@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, Redirect } from "react-router-dom";
+import { useState, useContext } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "./../../context/userContext";
+import { Redirect } from "react-router-dom";
 
 import * as loginFormStyles from "./styledLogin";
 import Input from "./input";
 
 export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
   const [shouldRedirect, setShouldRedirect] = useState("");
+  const { auth } = useContext(UserContext);
 
   const doSubmit = () => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, state.data.username, state.data.password)
       .then(() => {
         setShouldRedirect(true);
@@ -24,8 +25,9 @@ export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
       <h1>Logowanie</h1>
       <form onSubmit={(e) => handleSubmit(e, doSubmit)}>
         <Input
+          type="email"
           name="username"
-          label="Imię"
+          label="Email"
           value={state.data.username}
           onChange={handleChange}
           error={state.errors.username}
@@ -38,9 +40,7 @@ export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
           onChange={handleChange}
           error={state.errors.password}
         />
-        <button disabled={validate} className="btn btn-primary">
-          Zaloguj
-        </button>
+        <button className="btn btn-primary">Zaloguj</button>
       </form>
     </loginFormStyles.LoginForm>
   );

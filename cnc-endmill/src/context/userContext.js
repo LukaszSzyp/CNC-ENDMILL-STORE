@@ -5,6 +5,7 @@ export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [auth, setAuth] = useState({});
 
   useEffect(() => {
     listenOnAuthStateChanged();
@@ -12,13 +13,15 @@ export const UserContextProvider = ({ children }) => {
 
   const listenOnAuthStateChanged = () => {
     const auth = getAuth();
-
+    setAuth(auth);
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
   };
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, auth }}>
+      {children}
+    </UserContext.Provider>
   );
 };

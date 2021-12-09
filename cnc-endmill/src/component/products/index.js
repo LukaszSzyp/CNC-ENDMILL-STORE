@@ -7,6 +7,7 @@ export const Products = () => {
     <productsStyled.Products>
       {storeCategoryPL.map((category) => (
         <GroupBox
+          key={category.categoryTitle}
           title={category.categoryTitle}
           subCategory={category.subCategory}
         />
