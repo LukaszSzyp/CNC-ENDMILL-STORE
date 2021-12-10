@@ -9,7 +9,7 @@ export const GroupBox = ({ title, subCategory }) => {
         {subCategory.map((subCategory) => (
           <Tiles
             title={subCategory.title}
-            img={subCategory.img}
+            imgURL={subCategory.imgURL}
             key={subCategory.title}
           />
         ))}
