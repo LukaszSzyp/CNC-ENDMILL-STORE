@@ -1,11 +1,17 @@
 import { LoginForm } from "./loginForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "../../context/userContext";
+import { Redirect } from "react-router-dom";
 
 export const Form = () => {
   const [state, setState] = useState({
     data: { username: "", password: "" },
     errors: {},
   });
+
+  const [shouldRedirect, setShouldRedirect] = useState("");
+  const { auth } = useContext(UserContext);
 
   const validate = () => {
     const errors = {};
@@ -46,12 +52,22 @@ export const Form = () => {
     setState({ data, errors });
   };
 
+  const handleSignIn = () => {
+    const data = state.data;
+    signInWithEmailAndPassword(auth, data.username, data.password)
+      .then(() => {
+        setShouldRedirect(true);
+      })
+      .catch((err) => alert(err.message));
+  };
+  if (shouldRedirect) return <Redirect to="/store" />;
   return (
     <LoginForm
       validate={validate}
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       state={state}
+      handleSignIn={handleSignIn}
     />
   );
 };
