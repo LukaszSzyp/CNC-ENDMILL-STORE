@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import * as loginFormStyles from "./styledLogin";
 import Input from "./input";
 
-export const LoginForm = ({ validate, handleSubmit, handleChange, state }) => {
+export const LoginForm = ({ handleSubmit, handleChange, state }) => {
   const [shouldRedirect, setShouldRedirect] = useState("");
   const { auth } = useContext(UserContext);
 
