@@ -20,4 +20,3 @@ export const getDataCategories = (setData) => {
       setData(storeCategory);
     });
 };
-//end-mill/milling-tools.json

@@ -1,10 +1,28 @@
-import * as StyledCategory from "./styles/styledStore";
+import * as StyledCategory from "./styles/styledCategory";
 
-export const Category = () => {
+export const Category = ({
+  category,
+  handleSelectedCategory,
+  selectedCategory,
+}) => {
   return (
     <>
       <StyledCategory.Container>
-        <h3>Category</h3>
+        {category.map((item) => (
+          <div
+            key={item.category}
+            className={
+              selectedCategory.category === item.category
+                ? "categoryItem selected"
+                : "categoryItem"
+            }
+            categoryName={item.category}
+            onClick={(e) => handleSelectedCategory(e)}
+          >
+            {item.category}
+          </div>
+        ))}
+        <div className="categoryItem">+</div>
       </StyledCategory.Container>
     </>
   );

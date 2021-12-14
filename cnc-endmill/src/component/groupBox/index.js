@@ -4,7 +4,7 @@ import { Tiles } from "./tiles";
 export const GroupBox = ({ title, subCategory }) => {
   return (
     <>
-      <groupBoxStyled.GroupBoxContainer>
+      <groupBoxStyled.Container>
         <h2>{`${title}`}</h2>
         {subCategory.map((subCategory) => (
           <Tiles
@@ -13,7 +13,7 @@ export const GroupBox = ({ title, subCategory }) => {
             key={subCategory.title}
           />
         ))}
-      </groupBoxStyled.GroupBoxContainer>
+      </groupBoxStyled.Container>
     </>
   );
 };
