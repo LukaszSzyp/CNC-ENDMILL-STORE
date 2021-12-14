@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const GroupBoxContainer = styled.div`
+export const Container = styled.div`
   width: min(270px, 30vw);
   height: min(500px, 60vh);
   background-color: #f2f2f2;

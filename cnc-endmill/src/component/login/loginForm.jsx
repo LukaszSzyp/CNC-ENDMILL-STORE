@@ -1,24 +1,15 @@
-import { useState, useContext } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { UserContext } from "./../../context/userContext";
-import { Redirect } from "react-router-dom";
-
 import * as loginFormStyles from "./styledLogin";
 import Input from "./input";
 
-export const LoginForm = ({ handleSubmit, handleChange, state }) => {
-  const [shouldRedirect, setShouldRedirect] = useState("");
-  const { auth } = useContext(UserContext);
-
+export const LoginForm = ({
+  handleSubmit,
+  handleChange,
+  state,
+  handleSignIn,
+}) => {
   const doSubmit = () => {
-    signInWithEmailAndPassword(auth, state.data.username, state.data.password)
-      .then(() => {
-        setShouldRedirect(true);
-      })
-      .catch((err) => alert(err.message));
+    handleSignIn();
   };
-
-  if (shouldRedirect) return <Redirect to="/products" />;
 
   return (
     <loginFormStyles.LoginForm>
