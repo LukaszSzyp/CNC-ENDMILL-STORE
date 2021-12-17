@@ -9,6 +9,7 @@ export const Store = () => {
     category: "",
     subCategory: "",
   });
+  const [hidden, setHidden] = useState("hidden");
 
   useEffect(() => {
     getDataCategories(setStoreCategory);
@@ -19,6 +20,13 @@ export const Store = () => {
     setSelectedCategory({ ...selectedCategory, category: categoryName });
   };
 
+  const showInput = (inputField) => {
+    if (hidden !== "showing") {
+      setHidden("showing");
+    }
+    inputField.current.classList.add("stretch");
+  };
+
   return (
     <StyledStore.Container>
       <h3>Store</h3>
@@ -26,6 +34,8 @@ export const Store = () => {
         category={storeCategory}
         selectedCategory={selectedCategory}
         handleSelectedCategory={handleSelectedCategory}
+        showInput={showInput}
+        hidden={hidden}
       />
     </StyledStore.Container>
   );
