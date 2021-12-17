@@ -1,10 +1,15 @@
+import { useRef } from "react";
 import * as StyledCategory from "./styles/styledCategory";
 
 export const Category = ({
   category,
   handleSelectedCategory,
   selectedCategory,
+  showInput,
+  hidden,
 }) => {
+  const inputField = useRef(null);
+
   return (
     <>
       <StyledCategory.Container>
@@ -22,7 +27,22 @@ export const Category = ({
             {item.category}
           </div>
         ))}
-        <div className="categoryItem">+</div>
+        <div
+          className="inputContainer"
+          onMouseOver={() => {
+            showInput(inputField);
+          }}
+        >
+          <input
+            className={hidden}
+            type="text"
+            id="newCategory"
+            name="newCategory"
+            autofocus
+            ref={inputField}
+          ></input>
+          <div className="categoryItem">+</div>
+        </div>
       </StyledCategory.Container>
     </>
   );

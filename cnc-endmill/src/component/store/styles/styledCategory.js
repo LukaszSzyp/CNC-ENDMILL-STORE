@@ -25,4 +25,46 @@ export const Container = styled.div`
     color: black;
     font-weight: 600;
   }
+
+  .inputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.3rem;
+
+    input {
+      border: none;
+      border-radius: 5px;
+      height: 2.7rem;
+      background-color: #6d7274;
+      font-weight: 600;
+      font-size: 1.3rem;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: Uppercase;
+      width: 10px;
+      transition: width 200ms ease-in;
+
+      :focus {
+        outline: none;
+        outline: 1px solid ${({ theme }) => theme.colors.yellow};
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .showing {
+    }
+
+    .stretch {
+      width: 250px;
+    }
+
+    input,
+    select,
+    textarea {
+      color: white;
+    }
+  }
 `;
