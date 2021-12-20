@@ -30,7 +30,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0.3rem;
 
     input {
       border: none;
@@ -41,20 +40,17 @@ export const Container = styled.div`
       font-size: 1.3rem;
       font-family: Arial, Helvetica, sans-serif;
       text-transform: Uppercase;
-      width: 10px;
+      width: 20px;
       transition: width 200ms ease-in;
 
       :focus {
         outline: none;
         outline: 1px solid ${({ theme }) => theme.colors.yellow};
       }
-    }
 
-    .hidden {
-      display: none;
-    }
-
-    .showing {
+      :not(:focus) {
+        width: 20px;
+      }
     }
 
     .stretch {
@@ -66,5 +62,12 @@ export const Container = styled.div`
     textarea {
       color: white;
     }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .showing {
   }
 `;

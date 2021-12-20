@@ -13,35 +13,35 @@ export const Category = ({
   return (
     <>
       <StyledCategory.Container>
-        {category.map((item) => (
-          <div
-            key={item.category}
-            className={
-              selectedCategory.category === item.category
-                ? "categoryItem selected"
-                : "categoryItem"
-            }
-            categoryName={item.category}
-            onClick={(e) => handleSelectedCategory(e)}
-          >
-            {item.category}
-          </div>
-        ))}
+        {category &&
+          category.map((item) => (
+            <div
+              key={item.category}
+              className={
+                selectedCategory === item.category
+                  ? "categoryItem selected"
+                  : "categoryItem"
+              }
+              categoryName={item.category}
+              onClick={(e) => handleSelectedCategory(e, inputField)}
+            >
+              {item.category}
+            </div>
+          ))}
         <div
           className="inputContainer"
           onMouseOver={() => {
             showInput(inputField);
           }}
         >
+          <div className="categoryItem">+</div>
           <input
             className={hidden}
             type="text"
             id="newCategory"
             name="newCategory"
-            autofocus
             ref={inputField}
           ></input>
-          <div className="categoryItem">+</div>
         </div>
       </StyledCategory.Container>
     </>

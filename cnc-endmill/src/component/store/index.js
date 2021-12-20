@@ -9,15 +9,30 @@ export const Store = () => {
     category: "",
     subCategory: "",
   });
+
   const [hidden, setHidden] = useState("hidden");
 
   useEffect(() => {
     getDataCategories(setStoreCategory);
   }, []);
 
-  const handleSelectedCategory = (e) => {
+  let subCategoryItem =
+    selectedCategory.category &&
+    storeCategory.find((item) => item.category === selectedCategory.category)
+      .subCategory;
+
+  const handleSelectedCategory = (e, inputField) => {
     const categoryName = e.target.getAttribute("categoryName");
     setSelectedCategory({ ...selectedCategory, category: categoryName });
+    setHidden("hidden");
+    inputField.current.value = "";
+  };
+
+  const handleSelectedSubCategory = (e, inputField) => {
+    const categoryName = e.target.getAttribute("categoryName");
+    setSelectedCategory({ ...selectedCategory, subCategory: categoryName });
+    setHidden("hidden");
+    inputField.current.value = "";
   };
 
   const showInput = (inputField) => {
@@ -32,11 +47,20 @@ export const Store = () => {
       <h3>Store</h3>
       <Category
         category={storeCategory}
-        selectedCategory={selectedCategory}
+        selectedCategory={selectedCategory.category}
         handleSelectedCategory={handleSelectedCategory}
         showInput={showInput}
         hidden={hidden}
       />
+      {selectedCategory.category && (
+        <Category
+          category={subCategoryItem}
+          selectedCategory={selectedCategory.subCategory}
+          handleSelectedCategory={handleSelectedSubCategory}
+          showInput={showInput}
+          hidden={hidden}
+        />
+      )}
     </StyledStore.Container>
   );
 };
