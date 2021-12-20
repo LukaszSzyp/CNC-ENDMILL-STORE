@@ -22,7 +22,7 @@ export const Category = ({
                 : "categoryItem"
             }
             categoryName={item.category}
-            onClick={(e) => handleSelectedCategory(e)}
+            onClick={(e) => handleSelectedCategory(e, inputField)}
           >
             {item.category}
           </div>
@@ -33,6 +33,7 @@ export const Category = ({
             showInput(inputField);
           }}
         >
+          <div className="categoryItem">+</div>
           <input
             className={hidden}
             type="text"
@@ -41,7 +42,6 @@ export const Category = ({
             autofocus
             ref={inputField}
           ></input>
-          <div className="categoryItem">+</div>
         </div>
       </StyledCategory.Container>
     </>

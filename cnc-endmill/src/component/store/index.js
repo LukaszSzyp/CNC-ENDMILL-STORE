@@ -15,9 +15,11 @@ export const Store = () => {
     getDataCategories(setStoreCategory);
   }, []);
 
-  const handleSelectedCategory = (e) => {
+  const handleSelectedCategory = (e, inputField) => {
     const categoryName = e.target.getAttribute("categoryName");
     setSelectedCategory({ ...selectedCategory, category: categoryName });
+    setHidden("hidden");
+    inputField.current.value = "";
   };
 
   const showInput = (inputField) => {
