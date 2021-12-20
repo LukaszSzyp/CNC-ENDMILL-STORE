@@ -13,7 +13,7 @@ export const getDataCategories = (setData) => {
       const storeCategory = Object.keys(data).map((item) => ({
         category: item,
         subCategory: Object.keys(data[item]).map((subCategoryItem) => ({
-          title: subCategoryItem,
+          category: subCategoryItem,
           imgURL: data[item][subCategoryItem].imgURL,
         })),
       }));

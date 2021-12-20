@@ -53,13 +53,6 @@ export const Container = styled.div`
       }
     }
 
-    .hidden {
-      display: none;
-    }
-
-    .showing {
-    }
-
     .stretch {
       width: 250px;
     }
@@ -69,5 +62,12 @@ export const Container = styled.div`
     textarea {
       color: white;
     }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .showing {
   }
 `;
