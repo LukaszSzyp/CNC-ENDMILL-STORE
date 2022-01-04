@@ -36,7 +36,8 @@ export const Category = ({
         >
           <div className="categoryItem">+</div>
           <input
-            className={hidden}
+            isHidden="true"
+            className="hidden"
             type="text"
             id="newCategory"
             name="newCategory"
