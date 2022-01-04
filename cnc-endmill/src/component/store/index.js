@@ -10,8 +10,6 @@ export const Store = () => {
     subCategory: "",
   });
 
-  const [hidden, setHidden] = useState("hidden");
-
   useEffect(() => {
     getDataCategories(setStoreCategory);
   }, []);
@@ -21,25 +19,33 @@ export const Store = () => {
     storeCategory.find((item) => item.category === selectedCategory.category)
       .subCategory;
 
+  const hiddenInput = (inputField) => {
+    let inputObject = inputField.current;
+    inputObject.setAttribute("isHidden", "true");
+    inputObject.classList.add("hidden");
+    inputObject.value = "";
+  };
+
   const handleSelectedCategory = (e, inputField) => {
     const categoryName = e.target.getAttribute("categoryName");
     setSelectedCategory({ ...selectedCategory, category: categoryName });
-    setHidden("hidden");
-    inputField.current.value = "";
+    hiddenInput(inputField);
   };
 
   const handleSelectedSubCategory = (e, inputField) => {
     const categoryName = e.target.getAttribute("categoryName");
     setSelectedCategory({ ...selectedCategory, subCategory: categoryName });
-    setHidden("hidden");
-    inputField.current.value = "";
+    hiddenInput(inputField);
   };
 
   const showInput = (inputField) => {
-    if (hidden !== "showing") {
-      setHidden("showing");
+    let inputObject = inputField.current;
+    if (inputObject.getAttribute("isHidden")) {
+      inputObject.classList.remove("hidden");
+      inputObject.setAttribute("isHidden", "false");
+      inputObject.focus();
+      inputObject.classList.add("stretch");
     }
-    inputField.current.classList.add("stretch");
   };
 
   return (
@@ -50,7 +56,6 @@ export const Store = () => {
         selectedCategory={selectedCategory.category}
         handleSelectedCategory={handleSelectedCategory}
         showInput={showInput}
-        hidden={hidden}
       />
       {selectedCategory.category && (
         <Category
@@ -58,7 +63,6 @@ export const Store = () => {
           selectedCategory={selectedCategory.subCategory}
           handleSelectedCategory={handleSelectedSubCategory}
           showInput={showInput}
-          hidden={hidden}
         />
       )}
     </StyledStore.Container>
