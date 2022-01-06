@@ -10,6 +10,8 @@ export const Store = () => {
     subCategory: "",
   });
 
+  let inputData = "";
+
   useEffect(() => {
     getDataCategories(setStoreCategory);
   }, []);
@@ -48,6 +50,38 @@ export const Store = () => {
     }
   };
 
+  const getInputData = (e) => {
+    inputData = e.target.value;
+  };
+
+  const addCategory = (level, inputField) => {
+    if (level === "category") {
+      const newStoreCategory = [
+        ...storeCategory,
+        {
+          category: inputData,
+          subCategory: "",
+        },
+      ];
+      setStoreCategory(newStoreCategory);
+    }
+
+    if (level === "subCategory") {
+      const newStoreSubCategory = storeCategory.map((element) => {
+        if (element.category === selectedCategory.category) {
+          element = {
+            category: selectedCategory.category,
+            subCategory: [...element.subCategory, { category: inputData }],
+          };
+        }
+        return element;
+      });
+      setStoreCategory(newStoreSubCategory);
+    }
+
+    inputField.current.value = "";
+  };
+
   return (
     <StyledStore.Container>
       <h3>Store</h3>
@@ -56,6 +90,9 @@ export const Store = () => {
         selectedCategory={selectedCategory.category}
         handleSelectedCategory={handleSelectedCategory}
         showInput={showInput}
+        getInputData={getInputData}
+        level="category"
+        addCategory={addCategory}
       />
       {selectedCategory.category && (
         <Category
@@ -63,6 +100,9 @@ export const Store = () => {
           selectedCategory={selectedCategory.subCategory}
           handleSelectedCategory={handleSelectedSubCategory}
           showInput={showInput}
+          getInputData={getInputData}
+          level="subCategory"
+          addCategory={addCategory}
         />
       )}
     </StyledStore.Container>

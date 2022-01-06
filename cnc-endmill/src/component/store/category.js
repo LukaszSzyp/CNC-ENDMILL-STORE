@@ -6,7 +6,9 @@ export const Category = ({
   handleSelectedCategory,
   selectedCategory,
   showInput,
-  hidden,
+  getInputData,
+  addCategory,
+  level,
 }) => {
   const inputField = useRef(null);
 
@@ -34,7 +36,12 @@ export const Category = ({
             showInput(inputField);
           }}
         >
-          <div className="categoryItem">+</div>
+          <div
+            className="categoryItem"
+            onClick={() => addCategory(level, inputField)}
+          >
+            +
+          </div>
           <input
             isHidden="true"
             className="hidden"
@@ -42,6 +49,7 @@ export const Category = ({
             id="newCategory"
             name="newCategory"
             ref={inputField}
+            onChange={(e) => getInputData(e)}
           ></input>
         </div>
       </StyledCategory.Container>
