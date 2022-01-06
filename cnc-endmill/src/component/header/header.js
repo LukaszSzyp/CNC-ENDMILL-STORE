@@ -19,11 +19,11 @@ export const Header = () => {
               <headerStyles.Logo src="./img/fanarLogo.jpg" alt="Logo Fanar" />
             </NavLink>
             <headerStyles.ButtonContainer>
-              {user && (
-                <NavLink to={"/store"} activeClassName="selected">
-                  <headerStyles.Button>Store</headerStyles.Button>
-                </NavLink>
-              )}
+              {/* {user && ( */}
+              <NavLink to={"/store"} activeClassName="selected">
+                <headerStyles.Button>Store</headerStyles.Button>
+              </NavLink>
+              {/* )} */}
               <NavLink to={"/products"} activeClassName="selected">
                 <headerStyles.Button>Product</headerStyles.Button>
               </NavLink>
