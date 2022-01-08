@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { getDataCategories } from "../../db-data/services";
+import { getDataCategories, sendCategory } from "../../db-data/services";
 import { Category } from "./category";
+import { Table } from "./table";
 import * as StyledStore from "./styles/styledStore";
 
 export const Store = () => {
@@ -30,7 +31,7 @@ export const Store = () => {
 
   const handleSelectedCategory = (e, inputField) => {
     const categoryName = e.target.getAttribute("categoryName");
-    setSelectedCategory({ ...selectedCategory, category: categoryName });
+    setSelectedCategory({ category: categoryName, subCategory: "" });
     hiddenInput(inputField);
   };
 
@@ -55,12 +56,13 @@ export const Store = () => {
   };
 
   const addCategory = (level, inputField) => {
+    if (inputData === "") return alert("Wartość jest pusta");
     if (level === "category") {
       const newStoreCategory = [
         ...storeCategory,
         {
           category: inputData,
-          subCategory: "",
+          subCategory: [],
         },
       ];
       setStoreCategory(newStoreCategory);
@@ -78,7 +80,6 @@ export const Store = () => {
       });
       setStoreCategory(newStoreSubCategory);
     }
-
     inputField.current.value = "";
   };
 
@@ -104,6 +105,11 @@ export const Store = () => {
           level="subCategory"
           addCategory={addCategory}
         />
+      )}
+      {selectedCategory.subCategory !== "" ? (
+        <Table selectedCategory={selectedCategory} />
+      ) : (
+        ""
       )}
     </StyledStore.Container>
   );
