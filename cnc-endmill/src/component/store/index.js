@@ -106,7 +106,11 @@ export const Store = () => {
           addCategory={addCategory}
         />
       )}
-      {selectedCategory.subCategory !== "" ? <Table /> : ""}
+      {selectedCategory.subCategory !== "" ? (
+        <Table selectedCategory={selectedCategory} />
+      ) : (
+        ""
+      )}
     </StyledStore.Container>
   );
 };

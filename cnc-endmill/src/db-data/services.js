@@ -10,7 +10,6 @@ export const getDataCategories = (setData) => {
   getData()
     .then((r) => r.json())
     .then((data) => {
-      console.log(data);
       const storeCategory = Object.keys(data).map((item) => ({
         category: item,
         subCategory: Object.keys(data[item]).map((subCategoryItem) => ({
@@ -19,6 +18,16 @@ export const getDataCategories = (setData) => {
         })),
       }));
       setData(storeCategory);
+    });
+};
+
+export const getChoiceData = (category, subCategory, setChoiceData) => {
+  fetch(`${DATABASE_URL}/store/${category}/${subCategory}.json`)
+    .then((r) => r.json())
+    .then((data) => {
+      const choiceData = Object.keys(data);
+      console.log(choiceData);
+      setChoiceData(choiceData);
     });
 };
 
