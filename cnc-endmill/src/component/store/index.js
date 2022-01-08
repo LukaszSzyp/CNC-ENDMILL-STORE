@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDataCategories } from "../../db-data/services";
+import { getDataCategories, sendCategory } from "../../db-data/services";
 import { Category } from "./category";
 import * as StyledStore from "./styles/styledStore";
 
@@ -55,12 +55,13 @@ export const Store = () => {
   };
 
   const addCategory = (level, inputField) => {
+    if (inputData === "") return alert("Wartość jest pusta");
     if (level === "category") {
       const newStoreCategory = [
         ...storeCategory,
         {
           category: inputData,
-          subCategory: "",
+          subCategory: [],
         },
       ];
       setStoreCategory(newStoreCategory);
@@ -78,7 +79,6 @@ export const Store = () => {
       });
       setStoreCategory(newStoreSubCategory);
     }
-
     inputField.current.value = "";
   };
 
